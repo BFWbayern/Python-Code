@@ -67,9 +67,9 @@ class Game:
         
         :param self: The game instance.
         """
-        is_running = True
+        self.is_running = True
 
-        while (is_running):
+        while (self.is_running):
             num = random.randint(MIN_VALUE, MAX_VALUE)
             output(f"Guess the integer number between {MIN_VALUE} and {MAX_VALUE}.")
 
@@ -94,13 +94,13 @@ class Game:
                         output(f"You nailed it!{ColorCodes.DEFAULT.value}\nTo reroll, just hit enter; to quit, hit anything else.", ColorCodes.GREEN)
                         
                         if (prompt(ColorCodes.CYAN) != ''):
-                            is_running = False
+                            self.is_running = False
                             return
                         clear()
                         break
                 except:
                     if (len(user_input) == 1 and user_input[0].lower() == QUIT_KEY):
-                        is_running = False
+                        self.is_running = False
                         output("We're stopping right 'ere.\nBye.", ColorCodes.BOLD)
                         return
                     output("Your input was not in the format of an integer. Please re-enter.", ColorCodes.RED)
