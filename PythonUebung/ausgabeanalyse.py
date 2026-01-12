@@ -66,7 +66,6 @@ def aufgabe16():
     b = False
     print(a or b and not b)
 
-
 def aufgabe17():
     for i in range(2, 5):
         print(i)
@@ -140,4 +139,3 @@ def aufgabe31():
 def aufgabe32():
     d = ['!',"1","I","0","5","2","T"]
     print(d[5] + d[4] + d[3] + d[1])
-    
