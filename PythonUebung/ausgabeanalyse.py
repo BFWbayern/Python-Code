@@ -108,8 +108,8 @@ def aufgabe25():
 
 def aufgabe26():
     {
-    # print("abcdef".[-1])
-    }
+        # print("abcdef".[-1])
+    } # pyright: ignore[reportUnusedExpression]
 
 def aufgabe27():
     a = 3
