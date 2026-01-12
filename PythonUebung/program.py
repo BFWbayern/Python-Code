@@ -2,6 +2,7 @@ from helpers.reflection_helper import ModuleReflector
 
 reflector = ModuleReflector("aufgaben")
 aufgaben = reflector.get_functions()
+aufgaben_ausgabeanalyse = ModuleReflector("ausgabeanalyse").get_functions()
 is_running = True
 
 while (is_running):
