@@ -5,7 +5,7 @@ class ModuleReflector:
     def __init__(self, module_name):
         self.module = import_module(module_name)
 
-    def get_functions(self):
+    def get_functions(self): 
         functions = [
             func for name, func in getmembers(self.module, isfunction)
             if (func.__module__ == self.module.__name__)
