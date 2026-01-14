@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Hangman",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Hangman/program.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "PythonUebung",
             "type": "debugpy",
             "request": "launch",
