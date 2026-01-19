@@ -171,3 +171,78 @@ def aufgabe27():
 def aufgabe28():
     for i in range(0, 42 + 1):
         print(i, end = ', ')
+
+def aufgabe29():
+    for i in range(0, 42 + 1):
+        if(i%2==0):
+            print(i, end = ', ')
+
+def aufgabe30():
+    user_input = input("Geben Sie eine Zahl über 0 an: ")
+    try:
+        zahl = int(user_input)
+        if zahl > 0:
+            for i in range(0, zahl + 1):
+                print(i, end = ', ')
+        else:
+            print("Die Zahl ist kleiner als oder gleich null.")
+    except ValueError:
+        print("Dies war gar keine Zahl :(")
+
+def aufgabe31():
+    while True:
+        user_input = input("Geben Sie eine Zahl an: ")
+        try:
+            zahl = int(user_input)
+            if zahl is not 0:
+                print("Probieren Sie's weiter.")
+            else:
+                print("Juppi.")
+                break
+        except ValueError:
+            print("Dies war gar keine Zahl :(")
+
+def aufgabe32():
+    while True:
+        user_input = input("Geben Sie einen Namen ein: ")
+        if(user_input is not "Wilfried"):
+            "Probieren Sie's weiter."
+        else:
+            print("Der ist es.")
+            break
+
+def aufgabe33():
+    zahlen = [1, 2, 3, 4]
+    print(f"Zweites Element: {zahlen[1]}, Länge: {len(zahlen)}")
+
+def aufgabe34():
+    dict = {
+        "name": "Wilfried",
+        "alter": 25
+    }
+
+def aufgabe35():
+    set = {"rot", "grün", "blau"}
+    set.add("gelb")
+
+def aufgabe36():
+    tuple = ("Montag", "Dienstag", "Mittwoch")
+
+def aufgabe37():
+    liste = [1, 2, 2, 3, 4, 4, 4]
+    ohne_duplikate = list(set(liste))
+
+def begruesse():
+    print("Hallo, willkommen")
+
+def quadrat(zahl: int):
+    print(zahl * zahl)
+
+def ist_gerade(zahl: int):
+    return(zahl % 2 == 0)
+
+def ist_ungerade(zahl: int):
+    return(zahl % 2 != 0)
+
+def addiere(zahl1: int, zahl2: int):
+    return zahl1 + zahl2
