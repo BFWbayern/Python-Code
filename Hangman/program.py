@@ -18,10 +18,14 @@ class Game:
     def my_render(self):
         THE_WORD = "The word: "
         MAX_WIDTH = len(THE_WORD) + len(self.word)*2
-        renderer = Renderer(MAX_WIDTH)
+        renderer = Renderer(MAX_WIDTH, 5)
+        renderer.set_cursor(0,0)
         renderer.put("a")
-        renderer.set_cursor(1,0)
+        renderer.set_cursor(1,1)
+        
         renderer.insert("cde")
+        renderer.put("a")
+        renderer.put("c")
         print(renderer.to_str())
 
     def render(self):

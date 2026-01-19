@@ -1,9 +1,10 @@
 class Renderer:
-    def __init__(self, width) -> None:
-        self.buffer = [' ' for _ in range(width * 5)]
+    def __init__(self, width: int, height: int) -> None:
+        self.buffer = [' ' for _ in range(width * height)]
         self.x = 0
         self.y = 0
         self.width = width
+        self.height = height
 
     def to_str(self) -> str:
         output = ""
@@ -16,12 +17,12 @@ class Renderer:
     
     def set_cursor(self, x: int, y: int):
         if(x >= self.width):
-            rr = x // self.width
+            new_row = x // self.width
             x = x - self.width
-            y = y + rr
-            new_i = x + y * self.width
-            if(new_i >= len(self.buffer)):
-                self.buffer += [' ' for _ in range(new_i-len(self.buffer))]
+            y = y + new_row
+            new_length = (x + y * self.width) + 1
+            if(new_length >= len(self.buffer)):
+                self.buffer += [' ' for _ in range(new_length - len(self.buffer))]
         self.x = x
         self.y = y
 
@@ -39,4 +40,3 @@ class Renderer:
 
     def indent(self, i: int = 1):
         self.set_cursor(self.x + i, self.y)
-    
