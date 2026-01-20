@@ -232,6 +232,50 @@ def aufgabe37():
     liste = [1, 2, 2, 3, 4, 4, 4]
     ohne_duplikate = list(set(liste))
 
+def aufgabe38():
+    begruesse()
+
+def aufgabe39():
+    user_input = input("Geben Sie eine Zahl an: ")
+    try:
+        zahl = int(user_input)
+        print("Das Quadrat:", quadrat(zahl))
+    except ValueError:
+        print("Dies war gar keine Zahl :(")
+
+def aufgabe40():
+    user_input = input("Geben Sie eine Zahl an: ")
+    try:
+        zahl = int(user_input)
+        if(ist_gerade(zahl)):
+            print("Ist gerade.")
+        else:
+            print("Ist ungerade.")
+    except ValueError:
+        print("Dies war gar keine Zahl :(")
+
+def aufgabe41():
+    user_input = input("Geben Sie eine Zahl an: ")
+    try:
+        zahl = int(user_input)
+        if(ist_ungerade(zahl)):
+            print("Ist ungerade.")
+        else:
+            print("Ist gerade.")
+    except ValueError:
+        print("Dies war gar keine Zahl :(")
+
+def aufgabe42():
+    user_input = input("Geben Sie eine Zahl an: ")
+    try:
+        zahl = int(user_input)
+        user_input = input("Geben Sie eine zweite Zahl an: ")
+        zahl2 = int(user_input)
+        summe = addiere(zahl, zahl2)
+        print(f"{summe=}")
+    except ValueError:
+        print("Dies war gar keine Zahl :(")
+
 def begruesse():
     print("Hallo, willkommen")
 
