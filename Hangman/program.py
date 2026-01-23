@@ -12,7 +12,7 @@ class Game:
         self.words = ["Testsubjekt", "Willkuerlich", "Sinnlos", "Zufaellig"]
         self.index = random.randint(0, len(self.words)-1)
         self.word = self.words[self.index]
-        self.discovered:list[str] = []
+        self.discovered:list[str] = [self.word[random.randint(0, len(self.word)-1)].lower()]
         self.wrong_guesses:list[str] = []
         self.MAX_WIDTH = len(THE_WORD) + len(self.word)*2+3
         self.MAX_HEIGHT = 7
