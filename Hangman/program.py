@@ -20,13 +20,13 @@ class Game:
     
     def render(self) -> None:
         renderer = Renderer(self.MAX_WIDTH*2, self.MAX_HEIGHT)
-        self._render_box(renderer)
-        self._render_guess_screen(renderer)
-        self._render_hangman_screen(renderer)
+        self.__render_box(renderer)
+        self.__render_guess_screen(renderer)
+        self.__render_hangman_screen(renderer)
         os.system("cls")
         print(str(renderer))
 
-    def _render_box(self, renderer: Renderer) -> None:
+    def __render_box(self, renderer: Renderer) -> None:
         renderer.put('╔')
         renderer.put_for('═', self.MAX_WIDTH-2)
         renderer.put('╦')
@@ -48,13 +48,13 @@ class Game:
         renderer.put_for('═', self.MAX_WIDTH-2)
         renderer.put('╝')
     
-    def _render_guess_screen(self, renderer: Renderer) -> None:
+    def __render_guess_screen(self, renderer: Renderer) -> None:
         renderer.set_cursor(2, 1)
         renderer.insert("The word: ")
         i = THE_WORD_LEN-1
 
         for char in self.word:
-            if(char.lower() in self.discovered):
+            if(self.discovered.__contains__(char.lower())):
                 renderer.insert(char + ' ')
             else:
                 renderer.insert("_ ")
@@ -82,7 +82,7 @@ class Game:
         else:
             renderer.insert("...")
 
-    def _render_hangman_screen(self, renderer: Renderer) -> None:
+    def __render_hangman_screen(self, renderer: Renderer) -> None:
         wrong_guesses_count = len(self.wrong_guesses)
 
         if(wrong_guesses_count < 1):
@@ -92,19 +92,19 @@ class Game:
 
         if(wrong_guesses_count < 2):
             return
-        renderer.set_cursor(renderer.get_x()-2, renderer.get_y()-1)
+        renderer.update_cursor(-2, -1)
         renderer.put('┃')
 
         if(wrong_guesses_count < 3):
             return
-        renderer.set_cursor(renderer.get_x()-1, renderer.get_y()-1)
+        renderer.update_cursor(-1, -1)
         renderer.put('┃')
 
         if(wrong_guesses_count < 4):
             return
-        renderer.set_cursor(renderer.get_x()-1, renderer.get_y()-1)
+        renderer.update_cursor(-1, -1)
         renderer.put('┃')
-        renderer.set_cursor(renderer.get_x()-1, renderer.get_y()-1)
+        renderer.update_cursor(-1, -1)
         renderer.put('┏')
 
         if(wrong_guesses_count < 5):
@@ -117,17 +117,17 @@ class Game:
 
         if(wrong_guesses_count < 7):
             return
-        renderer.set_cursor(renderer.get_x()-1, renderer.get_y()+1)
+        renderer.update_cursor(-1, 1)
         renderer.put('0')
 
         if(wrong_guesses_count < 8):
             return
-        renderer.set_cursor(renderer.get_x()-2, renderer.get_y()+1)
+        renderer.update_cursor(-2, 1)
         renderer.insert('/│\\')
 
         if(wrong_guesses_count < 9):
             return
-        renderer.set_cursor(renderer.get_x()-3, renderer.get_y()+1)
+        renderer.update_cursor(-3, 1)
         renderer.insert('/ \\')
 
     def check_is_won(self) -> bool:

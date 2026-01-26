@@ -44,11 +44,8 @@ class Renderer:
         self.__x = x
         self.__y = y
 
-    def set_x(self, x: int) -> None:
-        self.set_cursor(x, self.get_y())
-
-    def set_y(self, y: int) -> None:
-        self.set_cursor(self.get_x(), y)
+    def update_cursor(self, x: int, y: int) -> None:
+        self.set_cursor(self.__x+x, self.__y+y)
 
     def put(self, char: str) -> None:
         if(type(char) is not str):
