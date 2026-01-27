@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Tannenbaum",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Tannenbaum/program.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Hangman",
             "type": "debugpy",
             "request": "launch",
