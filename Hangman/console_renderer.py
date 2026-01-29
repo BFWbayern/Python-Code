@@ -10,13 +10,12 @@ class Renderer:
         self.__height = height
 
     def to_str(self) -> str:
-        output = ""
-
-        for i in range(0, len(self.__buffer)):
-            if(i >= self.__width and i % self.__width == 0):
-                output += '\n'
-            output += self.__buffer[i]
-        return output.rstrip()
+        output: list[str] = []
+        for y in range(self.__height):
+            start = y * self.__width
+            end = start + self.__width
+            output.append(''.join(self.__buffer[start : end]))
+        return '\n'.join(output)
     
     def __str__(self):
         return self.to_str()
