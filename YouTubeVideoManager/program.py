@@ -51,6 +51,12 @@ def to_dict(playlist: Playlist) -> dict[str, int]:
         return video_dict
 
 def umgekehrt(videos: list[Video]) -> None:
+    """
+    Reverses the specified list in ref-based manner.
+    
+    :param videos: The list of videos to be reversed.
+    :type videos: list[Video]
+    """
     for i in range(len(videos)//2):
         end = len(videos)-1-i
         temp = videos[end]
