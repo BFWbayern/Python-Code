@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "YouTube Video Manager",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/YouTubeVideoManager/program.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Tannenbaum",
             "type": "debugpy",
             "request": "launch",
