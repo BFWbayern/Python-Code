@@ -24,12 +24,14 @@ class Playlist:
 
     def playlist_umgedreht_ausgeben(self):
         self_cpy = copy.deepcopy(self)
-        self_cpy.videos.reverse()
+        # self_cpy.videos.reverse()
+        umgekehrt(self_cpy.videos)
         print(self_cpy)
 
     def playlist_nach_laufzeit_sortiert_ausgeben(self):
         self_cpy = copy.deepcopy(self)
-        self_cpy.videos.sort(key = lambda video: video.laufzeit_sekunden)
+        # self_cpy.videos.sort(key = lambda video: video.laufzeit_sekunden)
+        sort_laufzeit(self_cpy.videos)
         print(self_cpy)
 
     def save_to_json_file(self, filename: str):
@@ -48,6 +50,27 @@ def to_dict(playlist: Playlist) -> dict[str, int]:
             video_dict[video.link] = video.laufzeit_sekunden
         return video_dict
 
+def umgekehrt(videos: list[Video]) -> None:
+    for i in range(len(videos)//2):
+        end = len(videos)-1-i
+        temp = videos[end]
+        videos[end] = videos[i]
+        videos[i] = temp
+
+def sort_laufzeit(videos: list[Video]) -> None:
+    """
+    Sorts the specified list in ref-based manner.
+    
+    :param videos: The list of videos to be sorted.
+    :type videos: list[Video]
+    """
+    for i in range(len(videos)):
+        for j in range(len(videos)-i-1):
+            temp = videos[j]
+            if(videos[j].laufzeit_sekunden > videos[j+1].laufzeit_sekunden):
+                videos[j] = videos[j+1]
+                videos[j+1] = temp
+                
 def main():
     # Statisch definierte Videos
     video1 = Video("https://www.youtube.com/watch?v=x7X9w_GIm1s", 143)
