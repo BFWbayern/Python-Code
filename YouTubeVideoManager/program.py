@@ -69,11 +69,15 @@ def sort_laufzeit(videos: list[Video]) -> None:
     :type videos: list[Video]
     """
     for i in range(len(videos)):
+        swapped = False
         for j in range(len(videos)-i-1):
             next = j+1
             if(videos[j].laufzeit_sekunden > videos[next].laufzeit_sekunden):
                 (videos[j], videos[next]) = (videos[next], videos[j])
-                
+                swapped = True
+        if(not swapped):
+            break
+        
 def main():
     # Statisch definierte Videos
     video1 = Video("https://www.youtube.com/watch?v=x7X9w_GIm1s", 143)
