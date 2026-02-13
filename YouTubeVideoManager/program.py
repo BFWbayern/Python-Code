@@ -59,9 +59,7 @@ def umgekehrt(videos: list[Video]) -> None:
     """
     for i in range(len(videos)//2):
         end = len(videos)-1-i
-        temp = videos[end]
-        videos[end] = videos[i]
-        videos[i] = temp
+        (videos[i], videos[end]) = (videos[end], videos[i])
 
 def sort_laufzeit(videos: list[Video]) -> None:
     """
@@ -72,10 +70,9 @@ def sort_laufzeit(videos: list[Video]) -> None:
     """
     for i in range(len(videos)):
         for j in range(len(videos)-i-1):
-            temp = videos[j]
-            if(videos[j].laufzeit_sekunden > videos[j+1].laufzeit_sekunden):
-                videos[j] = videos[j+1]
-                videos[j+1] = temp
+            next = j+1
+            if(videos[j].laufzeit_sekunden > videos[next].laufzeit_sekunden):
+                (videos[j], videos[next]) = (videos[next], videos[j])
                 
 def main():
     # Statisch definierte Videos
