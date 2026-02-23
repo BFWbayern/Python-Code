@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "YouTube Video Manager Web",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/YouTubeVideoManagerWeb/program.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "YouTube Video Manager",
             "type": "debugpy",
             "request": "launch",

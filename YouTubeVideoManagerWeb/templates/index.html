@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+        <h5 class="mb-0">Your Saved YouTube Videos</h5>
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-outline-secondary" disabled>Latest</button>
+            <button class="btn btn-outline-secondary" disabled>Unsorted</button>
+            <button class="btn btn-outline-secondary" disabled>Favorites</button>
+        </div>
+    </div>
+
+    <div id="video-grid" class="row g-3">
+        {% for video in playlist.videos %}
+        {% include "partials/video_card.html" %}
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-light border">
+                No videos yet. Add one below 👇
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="card shadow-sm">
+    <div class="card-body">
+        <h6 class="card-title mb-3">Add New YouTube Link</h6>
+
+
+        <form id="add-video-form" hx-post="{{ url_for('add_video') }}" hx-target="#video-grid" hx-swap="afterbegin"
+            hx-on::after-request="this.reset()" class="row g-3">
+
+
+            <div class="col-12 col-md-6">
+                <label class="form-label">Title</label>
+                <input name="title" type="text" class="form-control" placeholder="e.g. My video" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label class="form-label">YouTube URL or ID</label>
+                <input name="url" type="url" class="form-control" placeholder="https://youtu.be/" required>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="2"
+                    placeholder="Short description (optional)"></textarea>
+            </div>
+
+            <div class="col-12 d-flex align-items-center gap-3">
+                <button class="btn btn-danger px-4" type="submit">Add Video</button>
+                <div id="form-error" class="text-danger small" hx-target="this" hx-swap="innerHTML"></div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.body.addEventListener('htmx:responseError', function (evt) {
+        const err = evt.detail.xhr ? evt.detail.xhr.responseText : 'Error';
+        document.getElementById('form-error').innerHTML = err || 'An error occurred.';
+    });
+
+    document.addEventListener('click', function (e) {
+        if (e.target.matches('[data-delete]')) {
+            const btn = e.target;
+            fetch(btn.dataset.url, { method: 'POST', headers: { 'HX-Request': 'true' } })
+                .then(resp => {
+                    if (resp.status === 204) {
+                        const card = btn.closest('.col');
+                        if (card) card.remove();
+                    }
+                });
+        }
+    });
+</script>
+
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Video</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
