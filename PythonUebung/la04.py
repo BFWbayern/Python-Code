@@ -30,3 +30,4 @@ while(True):
 
     print("Char commonness:")
     print(char_commonness(user_input))
+    
