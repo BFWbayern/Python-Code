@@ -5,6 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "YouTube Video Manager Web",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/YouTubeVideoManagerWeb/program.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "YouTube Video Manager",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/YouTubeVideoManager/program.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Tannenbaum",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Tannenbaum/program.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Hangman",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Hangman/program.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "PythonUebung",
             "type": "debugpy",
             "request": "launch",
